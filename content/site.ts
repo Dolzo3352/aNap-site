@@ -158,7 +158,7 @@ export const members: Member[] = [
     name: "김하윤",
     role: "[TODO] 역할",
     bio: "[TODO] 한 줄 소개",
-    portfolio: "https://discordapp.com/channels/1476537413949063252/1476537414963953737/1566821145779380334",
+    portfolio: "https://hayunz.github.io/portfolio/",
     character: 2,
   },
   {
