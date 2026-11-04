@@ -7,7 +7,7 @@ export const siteMeta = {
   name: "aNap",
   url: "https://anap-site.vercel.app",
   email: "hello@anap.studio", // [TODO]
-  instagram: "https://instagram.com/anap.studio", // [TODO]
+  instagram: "https://www.instagram.com/dearbrave_vr/",
 };
 
 export const worksMeta = {
