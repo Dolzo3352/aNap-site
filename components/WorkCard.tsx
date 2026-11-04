@@ -1,9 +1,9 @@
 import Image from "next/image";
-import type { Work } from "@/content/site";
+import type { Work } from "@/content";
 import Icon from "./Icon";
 import { PeaFigure } from "./Pea";
 
-export default function WorkCard({ work, index }: { work: Work; index: number }) {
+export default function WorkCard({ work, index, newWindow }: { work: Work; index: number; newWindow: string }) {
   const inner = (
     <>
       <div className="work-media">
@@ -19,13 +19,13 @@ export default function WorkCard({ work, index }: { work: Work; index: number })
                 <path d="M109 30h7l-7 8h7" />
               </g>
             </svg>
-            <span className="work-placeholder-label">이미지 준비 중</span>
+            <span className="work-placeholder-label">{work.year}</span>
           </div>
         ) : (
           <>
             <Image
               src={work.hero!}
-              alt={`${work.title} 대표 이미지`}
+              alt={work.title}
               fill
               sizes="(max-width: 760px) 100vw, (max-width: 1200px) 50vw, 600px"
               className="work-img work-img-hero"
@@ -78,7 +78,7 @@ export default function WorkCard({ work, index }: { work: Work; index: number })
         href={work.link}
         target={work.link.startsWith("http") ? "_blank" : undefined}
         rel={work.link.startsWith("http") ? "noopener noreferrer" : undefined}
-        aria-label={`${work.title} — ${work.linkLabel ?? "자세히 보기"} (새 창)`}
+        aria-label={`${work.title} — ${work.linkLabel ?? ""} (${newWindow})`}
       >
         {inner}
       </a>

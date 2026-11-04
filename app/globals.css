@@ -1299,3 +1299,75 @@ figcaption {
     stroke-dashoffset: 0;
   }
 }
+
+/* ───────────────────────────── language switch ───────────────────────────── */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2.5vw, 28px);
+}
+.lang {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  padding: 4px 10px;
+  border: 1.3px solid color-mix(in srgb, var(--line) 45%, transparent);
+  border-radius: var(--radius-hand);
+  background: color-mix(in srgb, var(--paper) 70%, transparent);
+}
+.lang-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.lang-sep {
+  opacity: 0.4;
+}
+.lang a {
+  padding: 2px 4px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+  line-height: 1;
+}
+.lang a:hover {
+  color: var(--ink);
+}
+.lang a.is-current {
+  color: var(--ink);
+  background: var(--pod);
+}
+html[lang="ja"] body {
+  font-family: "Pretendard JP Variable", "Pretendard JP", "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, "Hiragino Sans", "Noto Sans JP", sans-serif;
+}
+@media (max-width: 480px) {
+  .lang {
+    padding: 3px 8px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 640px) {
+  .nav {
+    flex-wrap: wrap;
+    row-gap: 8px;
+    padding-top: 12px;
+    padding-bottom: 10px;
+  }
+  .nav-right {
+    display: contents;
+  }
+  .lang {
+    order: 2;
+  }
+  .nav-links {
+    order: 3;
+    width: 100%;
+    gap: 16px;
+  }
+  .nav-links a:nth-child(3) {
+    display: inline;
+  }
+}

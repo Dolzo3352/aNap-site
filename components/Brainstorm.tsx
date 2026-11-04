@@ -86,7 +86,7 @@ function Pea({
   );
 }
 
-export default function Brainstorm() {
+export default function Brainstorm({ ariaLabel }: { ariaLabel: string }) {
   const svgRef = useRef<SVGSVGElement>(null);
   useFollow(svgRef, { body: 1.2, eyes: 1.4, tilt: 1.5 });
 
@@ -96,7 +96,7 @@ export default function Brainstorm() {
       className="brainstorm"
       viewBox="0 0 420 230"
       role="img"
-      aria-label="세 콩이 안경을 쓰고 연필을 든 채 머리를 맞대고 이야기를 구상하는 모습"
+      aria-label={ariaLabel}
     >
       {/* 바닥 그림자 */}
       <ellipse cx="210" cy="214" rx="150" ry="9" fill="var(--pod)" opacity=".55" />

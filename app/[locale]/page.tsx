@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Pod from "@/components/Pod";
 import Brainstorm from "@/components/Brainstorm";
@@ -7,17 +8,21 @@ import PeaAvatar from "@/components/PeaAvatar";
 import Reveal from "@/components/Reveal";
 import WorkCard from "@/components/WorkCard";
 import Icon, { Divider, Wordmark } from "@/components/Icon";
-import { about, contact, howWeWork, members, site, works } from "@/content/site";
+import { getContent, isLocale } from "@/content";
 
-export default function Home() {
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const { site, ui, about, works, howWeWork, members, contact } = getContent(locale);
+
   return (
     <>
-      <Nav />
+      <Nav locale={locale} labels={ui.nav} langMenu={ui.langMenu} />
       <main id="top">
         {/* ───────── Hero ───────── */}
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <p className="hero-eyebrow">An Immersive Story Studio</p>
+            <p className="hero-eyebrow">{site.eyebrow}</p>
             <h1 id="hero-title" className="hero-title">
               <span className="sr-only">{site.name} — </span>
               {site.tagline}
@@ -26,10 +31,10 @@ export default function Home() {
           </div>
 
           <div className="hero-pod">
-            <Pod />
+            <Pod ariaLabel={ui.podAria} />
           </div>
 
-          <a href="#about" className="hero-scroll" aria-label="아래로 스크롤">
+          <a href="#about" className="hero-scroll" aria-label={ui.scrollDown}>
             <Icon name="scroll" size={22} />
           </a>
         </section>
@@ -37,7 +42,7 @@ export default function Home() {
         {/* ───────── About ───────── */}
         <section id="about" className="section about" aria-labelledby="about-title">
           <Reveal className="section-head">
-            <p className="eyebrow">About</p>
+            <p className="eyebrow">{ui.nav.about}</p>
             <h2 id="about-title" className="h2">
               {about.heading}
             </h2>
@@ -51,7 +56,7 @@ export default function Home() {
                 ))}
               </Reveal>
               <Reveal className="about-scene-wrap" delay={200}>
-                <AboutScene />
+                <AboutScene ariaLabel={ui.aboutSceneAria} labels={ui.aboutSceneLabels} />
               </Reveal>
             </div>
             <ol className="strengths">
@@ -73,16 +78,16 @@ export default function Home() {
         {/* ───────── Works ───────── */}
         <section id="works" className="section works" aria-labelledby="works-title">
           <Reveal className="section-head">
-            <p className="eyebrow">Works</p>
+            <p className="eyebrow">{ui.nav.works}</p>
             <h2 id="works-title" className="h2">
-              만든 것들
+              {ui.worksHeading}
             </h2>
-            <p className="section-lead">카드를 누르면 작품 사이트로 이동합니다.</p>
+            <p className="section-lead">{ui.worksLead}</p>
           </Reveal>
           <div className="works-grid">
             {works.map((w, i) => (
               <Reveal key={w.slug} as="article" delay={i * 90}>
-                <WorkCard work={w} index={i} />
+                <WorkCard work={w} index={i} newWindow={ui.newWindow} />
               </Reveal>
             ))}
           </div>
@@ -93,7 +98,7 @@ export default function Home() {
         {/* ───────── Space / How we work ───────── */}
         <section id="space" className="section space" aria-labelledby="space-title">
           <Reveal className="section-head">
-            <p className="eyebrow">Space</p>
+            <p className="eyebrow">{ui.nav.space}</p>
             <h2 id="space-title" className="h2">
               {howWeWork.heading}
             </h2>
@@ -121,7 +126,7 @@ export default function Home() {
               <figure>
                 <div className="space-plan-wrap">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={howWeWork.plan.src} alt="전시 공간 동선 개념도" />
+                  <img src={howWeWork.plan.src} alt={ui.planAlt} />
                 </div>
                 <figcaption>{howWeWork.plan.caption}</figcaption>
               </figure>
@@ -129,7 +134,7 @@ export default function Home() {
           </div>
 
           <Reveal className="stack" delay={120}>
-            <span className="stack-label">함께 쓰는 것들</span>
+            <span className="stack-label">{ui.stackLabel}</span>
             <ul className="stack-list">
               {howWeWork.stack.map((s) => (
                 <li key={s}>{s}</li>
@@ -143,9 +148,9 @@ export default function Home() {
         {/* ───────── People ───────── */}
         <section id="people" className="section people" aria-labelledby="people-title">
           <Reveal className="section-head">
-            <p className="eyebrow">People</p>
+            <p className="eyebrow">{ui.nav.people}</p>
             <h2 id="people-title" className="h2">
-              팀원 소개
+              {ui.peopleHeading}
             </h2>
           </Reveal>
           <ul className="people-grid">
@@ -162,7 +167,7 @@ export default function Home() {
                     target={m.portfolio.startsWith("http") ? "_blank" : undefined}
                     rel={m.portfolio.startsWith("http") ? "noopener noreferrer" : undefined}
                   >
-                    포트폴리오 <Icon name="external" size={15} />
+                    {ui.portfolio} <Icon name="external" size={15} />
                   </a>
                 )}
               </Reveal>
@@ -173,7 +178,7 @@ export default function Home() {
         {/* ───────── Contact ───────── */}
         <section id="contact" className="section contact" aria-labelledby="contact-title">
           <Reveal className="contact-inner">
-            <p className="eyebrow">Contact</p>
+            <p className="eyebrow">{ui.nav.contact}</p>
             <h2 id="contact-title" className="h2">
               {contact.heading}
             </h2>
@@ -188,9 +193,14 @@ export default function Home() {
             </div>
           </Reveal>
           <div className="contact-scene">
-            <Brainstorm />
+            <Brainstorm ariaLabel={ui.brainstormAria} />
             <p className="contact-scene-caption">
-              이야기를 만드는 중<span className="dots" aria-hidden="true"><i>.</i><i>.</i><i>.</i></span>
+              {ui.contactCaption}
+              <span className="dots" aria-hidden="true">
+                <i>.</i>
+                <i>.</i>
+                <i>.</i>
+              </span>
             </p>
           </div>
         </section>
@@ -198,7 +208,9 @@ export default function Home() {
 
       <footer className="footer">
         <Wordmark height={18} />
-        <p>© {new Date().getFullYear()} aNap. All rights reserved.</p>
+        <p>
+          © {new Date().getFullYear()} aNap. {ui.rights}
+        </p>
       </footer>
     </>
   );

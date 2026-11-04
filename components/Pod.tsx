@@ -17,10 +17,12 @@ const SLEEPING: PeaState = { eyes: "closed", awake: false };
 export default function Pod({
   awake = false,
   className,
+  ariaLabel = "aNap",
 }: {
   /** true면 처음부터 세 명 다 깨어 있음 (Contact 섹션용) */
   awake?: boolean;
   className?: string;
+  ariaLabel?: string;
 }) {
   const [peas, setPeas] = useState<PeaState[]>(() =>
     awake ? [1, 2, 3].map(() => ({ eyes: "open", awake: true })) : [SLEEPING, SLEEPING, SLEEPING]
@@ -81,7 +83,7 @@ export default function Pod({
       className={`pod ${className ?? ""}`}
       viewBox="0 0 981 216"
       role="img"
-      aria-label="콩깍지 안에서 낮잠 자는 세 콩 — aNap"
+      aria-label={ariaLabel}
     >
       <g strokeLinecap="round" strokeLinejoin="round">
         <path d={POD_PATH} fill="var(--pod)" stroke="none" />

@@ -8,7 +8,13 @@ import { useFollow } from "./useFollow";
  * About 좌측 하단 — 왼쪽: 도면을 들고 고민하는 콩 / 오른쪽: 스토리보드 앞에서 회의하는 두 콩
  * 전부 CSS 애니메이션. 커서도 아주 살짝 따라옴.
  */
-export default function AboutScene() {
+export default function AboutScene({
+  ariaLabel,
+  labels,
+}: {
+  ariaLabel: string;
+  labels: [string, string];
+}) {
   const svgRef = useRef<SVGSVGElement>(null);
   useFollow(svgRef, { body: 1, eyes: 1.4, tilt: 1.5 });
 
@@ -18,7 +24,7 @@ export default function AboutScene() {
       className="about-scene"
       viewBox="0 0 440 210"
       role="img"
-      aria-label="도면을 보며 고민하는 콩과 스토리보드 앞에서 회의하는 두 콩"
+      aria-label={ariaLabel}
     >
       <g stroke="var(--line)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
         {/* ── 바닥 ── */}
@@ -121,8 +127,8 @@ export default function AboutScene() {
 
       {/* 라벨 */}
       <g fill="var(--muted)" fontFamily="var(--font)" fontSize="10.5" letterSpacing=".04em" textAnchor="middle">
-        <text x="95" y="200">공간 도면</text>
-        <text x="320" y="200">콘텐츠 회의</text>
+        <text x="95" y="200">{labels[0]}</text>
+        <text x="320" y="200">{labels[1]}</text>
       </g>
     </svg>
   );

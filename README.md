@@ -9,14 +9,15 @@ npm run dev      # http://localhost:3000
 npm run build    # 배포 전 확인
 ```
 
+## 언어 (한 / EN / 日)
+주소가 언어별로 나뉩니다: `/ko` `/en` `/ja`. 루트 `/`로 들어오면 브라우저 언어에 따라 자동 이동합니다(일본어→/ja, 영어→/en, 그 외→/ko).
+우측 상단 `한 / EN / 日` 버튼으로 전환할 수 있습니다.
+
 ## 글·링크 수정
-`content/site.ts` 한 파일만 고치면 됩니다. `[TODO]`로 표시된 곳을 실제 문구로 바꿔 주세요.
-- `site` — 태그라인, 이메일, 인스타, 배포 주소(OG용)
-- `about` — 소개 문단 + 강점 3개
-- `works` — 작품 3편 (링크, 이미지 경로, 상영 이력)
-- `howWeWork` — 전시 운영 사진 캡션, 사용 도구
-- `members` — 이름 / 역할 / 소개 / 포트폴리오 링크
-- `contact` — 연락 문구
+- **글** → `content/ko.ts` · `content/en.ts` · `content/ja.ts` (세 파일이 같은 구조, `[TODO]`가 임시 문구)
+- **링크·이미지 경로·이메일·인스타** → `content/shared.ts` (한 번만 고치면 세 언어에 모두 적용)
+- 작품 순서 → `content/shared.ts`의 `worksOrder`
+- 팀원 순서는 `shared.ts`의 `membersMeta`와 `ko/en/ja`의 `members`가 같은 순서여야 합니다
 
 ## 이미지 교체
 `public/images/` 아래 같은 파일명으로 덮어쓰면 됩니다.
@@ -39,8 +40,10 @@ npm run build    # 배포 전 확인
 
 ## 폴더 구조
 ```
-app/            layout, page, globals.css
-components/     Pod(히어로 콩깍지) · Pea(캐릭터 SVG) · PeaAvatar · WorkCard · Nav · Reveal · Icon
-content/        site.ts  ← 글·링크
+app/[locale]/   layout, page (ko/en/ja 공통)
+app/globals.css
+middleware.ts   / → 언어별 주소로 리다이렉트
+components/     Pod(히어로 콩깍지) · Pea(캐릭터 SVG) · PeaAvatar · AboutScene · Brainstorm · WorkCard · Nav · Reveal · Icon
+content/        ko.ts en.ts ja.ts ← 글 / shared.ts ← 링크·경로 / index.ts ← 합치기
 public/images/  사진
 ```
