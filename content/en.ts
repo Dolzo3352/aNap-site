@@ -35,7 +35,7 @@ const en: LocaleText = {
     strengths: [
       {
         title: "We've run exhibitions ourselves",
-        body: "We planned and built a showcase booth and ran it in person — visitor flow, onboarding and guidance included. [TODO: venue · dates · visitors]",
+        body: "We planned and built a showcase booth and ran it in person — visitor flow, onboarding and guidance included.",
       },
       {
         title: "We design space and content together",
