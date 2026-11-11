@@ -8,10 +8,15 @@ export default function Nav({
   locale,
   labels,
   langMenu,
+  processLabel,
+  subpath = "",
 }: {
   locale: Locale;
   labels: { about: string; works: string; space: string; people: string; contact: string };
   langMenu: string;
+  processLabel: string;
+  /** 홈이 아닌 페이지에서는 "/process" 처럼 넘깁니다 */
+  subpath?: string;
 }) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -21,17 +26,19 @@ export default function Nav({
     return () => window.removeEventListener("scroll", on);
   }, []);
 
+  // 홈에서는 같은 페이지 안 이동(#about), 다른 페이지에서는 홈의 해당 섹션으로
+  const base = subpath ? `/${locale}` : "";
   const links = [
-    { href: "#about", label: labels.about },
-    { href: "#works", label: labels.works },
-    { href: "#space", label: labels.space },
-    { href: "#people", label: labels.people },
-    { href: "#contact", label: labels.contact },
+    { href: `${base}#about`, label: labels.about },
+    { href: `${base}#works`, label: labels.works },
+    { href: `${base}#space`, label: labels.space },
+    { href: `${base}#people`, label: labels.people },
+    { href: `${base}#contact`, label: labels.contact },
   ];
 
   return (
     <header className={`nav ${scrolled ? "is-scrolled" : ""}`}>
-      <a href="#top" className="nav-brand" aria-label="aNap">
+      <a href={subpath ? `/${locale}` : "#top"} className="nav-brand" aria-label="aNap">
         <Wordmark height={22} />
       </a>
       <div className="nav-right">
@@ -41,6 +48,13 @@ export default function Nav({
               {l.label}
             </a>
           ))}
+          <a
+            href={`/${locale}/process`}
+            aria-current={subpath === "/process" ? "page" : undefined}
+            className={subpath === "/process" ? "is-current" : ""}
+          >
+            {processLabel}
+          </a>
         </nav>
         <nav className="lang" aria-label={langMenu}>
           {locales.map((l, i) => (
@@ -51,7 +65,7 @@ export default function Nav({
                 </span>
               )}
               <a
-                href={`/${l}`}
+                href={`/${l}${subpath}`}
                 hrefLang={localeLabel[l].html}
                 lang={localeLabel[l].html}
                 aria-label={localeLabel[l].name}

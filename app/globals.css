@@ -1371,3 +1371,279 @@ html[lang="ja"] body {
     display: inline;
   }
 }
+
+/* ───────────────────────────── process page ───────────────────────────── */
+:root {
+  --c-bubble: #c9785a;
+  --c-hand: #8fa654;
+  --c-band: #e8e3d4;
+  --c-grid: #ded8c8;
+}
+.nav-links a.is-current {
+  color: var(--ink);
+}
+.nav-links a.is-current::after {
+  transform: scaleX(1);
+}
+.strength-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 14.5px;
+  font-weight: 550;
+  border-bottom: 1.5px solid var(--pod-deep);
+  padding-bottom: 1px;
+  transition: gap 0.3s var(--ease);
+}
+.strength-link:hover {
+  gap: 10px;
+}
+.process {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(40px, 7vw, 88px) var(--gutter) clamp(56px, 8vw, 96px);
+}
+.process-head {
+  max-width: 760px;
+}
+.process-title {
+  font-size: clamp(28px, 4.4vw, 46px);
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+.process-lead {
+  margin-top: 20px;
+  font-size: 18px;
+}
+.process-source {
+  margin-top: 12px;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.process-section {
+  padding: clamp(40px, 6vw, 72px) 0 0;
+}
+.process-section + .section-divider,
+.steps + .section-divider {
+  margin-top: clamp(48px, 7vw, 80px);
+}
+.process-body {
+  margin-top: 14px;
+  max-width: 68ch;
+  color: var(--muted);
+}
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: clamp(32px, 5vw, 56px);
+}
+.tile,
+.step,
+.compare-item {
+  background: var(--paper);
+  border: 1.3px solid color-mix(in srgb, var(--line) 50%, transparent);
+  border-radius: 16px;
+  padding: 18px 20px;
+}
+.tile b,
+.compare-item b {
+  display: block;
+  font-size: clamp(22px, 2.6vw, 30px);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+.tile span,
+.compare-item span {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+.step small {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+.step b {
+  display: block;
+  margin-top: 6px;
+  font-size: 19px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+.step p {
+  margin-top: 6px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+  max-width: 760px;
+}
+.chart-card {
+  margin-top: 24px;
+  background: var(--paper);
+  border: 1.3px solid color-mix(in srgb, var(--line) 50%, transparent);
+  border-radius: 18px;
+  padding: 18px;
+}
+.chart-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.chart-tabs button {
+  font: inherit;
+  font-size: 13.5px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1.3px solid color-mix(in srgb, var(--line) 45%, transparent);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.chart-tabs button:hover {
+  color: var(--ink);
+}
+.chart-tabs button[aria-selected="true"] {
+  background: var(--pod);
+  border-color: var(--line);
+  color: var(--ink);
+}
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.chart-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.chart-legend i {
+  display: inline-block;
+  width: 16px;
+  height: 3px;
+  border-radius: 2px;
+}
+.chart-legend i.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+.chart-legend i.band {
+  height: 10px;
+  background: var(--c-band);
+}
+.chart-scroll {
+  overflow-x: auto;
+}
+.chart-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.chart-svg text {
+  font-family: inherit;
+  font-size: 12px;
+  fill: var(--muted);
+}
+.chart-svg text.strong {
+  fill: var(--ink);
+  font-weight: 600;
+  font-size: 13px;
+}
+.chart-svg text.muted {
+  font-size: 11px;
+}
+.chart-note {
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 78ch;
+}
+.radials {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.cue-table {
+  width: 100%;
+  max-width: 760px;
+  margin-top: 20px;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  font-variant-numeric: tabular-nums;
+}
+.cue-table th,
+.cue-table td {
+  text-align: left;
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--c-grid);
+  white-space: nowrap;
+}
+.cue-table th {
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--muted);
+}
+.cue-table .num {
+  text-align: right;
+}
+.process-back {
+  margin-top: clamp(40px, 6vw, 64px);
+}
+.flip {
+  transform: scaleX(-1);
+}
+@media (max-width: 900px) {
+  .tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .nav-links {
+    flex-wrap: wrap;
+    row-gap: 2px;
+  }
+  .radials {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .compare {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 일본어는 어절 단위 줄바꿈(keep-all)을 쓰면 구두점이 혼자 떨어지므로 기본 줄바꿈으로 */
+html[lang="ja"] body {
+  word-break: normal;
+  line-break: strict;
+}

@@ -9,15 +9,17 @@ import Reveal from "@/components/Reveal";
 import WorkCard from "@/components/WorkCard";
 import Icon, { Divider, Wordmark } from "@/components/Icon";
 import { getContent, isLocale } from "@/content";
+import { processText } from "@/content/process";
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const { site, ui, about, works, howWeWork, members, contact } = getContent(locale);
+  const pt = processText[locale];
 
   return (
     <>
-      <Nav locale={locale} labels={ui.nav} langMenu={ui.langMenu} />
+      <Nav locale={locale} labels={ui.nav} langMenu={ui.langMenu} processLabel={pt.navLabel} />
       <main id="top">
         {/* ───────── Hero ───────── */}
         <section className="hero" aria-labelledby="hero-title">
@@ -69,6 +71,16 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   <p className="strength-body">{s.body}</p>
                 </Reveal>
               ))}
+              <Reveal as="li" className="strength" delay={120 + about.strengths.length * 90}>
+                <span className="strength-num" aria-hidden="true">
+                  0{about.strengths.length + 1}
+                </span>
+                <h3 className="strength-title">{pt.homeStrength.title}</h3>
+                <p className="strength-body">{pt.homeStrength.body}</p>
+                <a className="strength-link" href={`/${locale}/process`}>
+                  {pt.homeStrength.link} <Icon name="arrow" size={15} />
+                </a>
+              </Reveal>
             </ol>
           </div>
         </section>
