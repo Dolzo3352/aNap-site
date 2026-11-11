@@ -7,7 +7,7 @@ export const siteMeta = {
   name: "aNap",
   url: "https://anap-site.vercel.app",
   email: "dearbrave1111@gmail.com",
-  instagram: "https://www.instagram.com/dearbrave_vr/",
+  instagram: "https://www.instagram.com/anap__studio/",
 };
 
 export const worksMeta = {
@@ -32,7 +32,7 @@ export const worksMeta = {
     poster: "/images/works/maeum/poster.webp",
   },
   snowglobe: {
-    comingSoon: true as const,
+    hero: "/images/works/snowglobe/hero.webp",
   },
 };
 
