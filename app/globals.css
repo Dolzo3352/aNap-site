@@ -1647,3 +1647,10 @@ html[lang="ja"] body {
   word-break: normal;
   line-break: strict;
 }
+.process-summary {
+  margin-top: 14px;
+  color: var(--muted);
+}
+.process-caveat {
+  margin-top: 20px;
+}
