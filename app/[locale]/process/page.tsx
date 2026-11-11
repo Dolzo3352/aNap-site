@@ -34,7 +34,6 @@ export default async function ProcessPage({ params }: { params: Promise<{ locale
           <p className="eyebrow">{t.eyebrow}</p>
           <h1 className="process-title">{t.title}</h1>
           <p className="process-lead">{t.lead}</p>
-          <p className="process-source">{t.source}</p>
         </header>
 
         <section className="process-section">
@@ -48,8 +47,6 @@ export default async function ProcessPage({ params }: { params: Promise<{ locale
           <p className="process-body">{t.radial.body}</p>
           <GazeRadials locale={locale} />
         </section>
-
-        <p className="chart-note process-caveat">{t.caveat}</p>
 
         <p className="process-back">
           <a className="btn btn-sm" href={`/${locale}`}>

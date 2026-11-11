@@ -9,13 +9,11 @@ export type ProcessText = {
   eyebrow: string;
   title: string;
   lead: string;
-  source: string;
   back: string;
-  score: { heading: string; body: string; note: (len: number, total: number, off: number) => string };
+  score: { heading: string; body: string };
   legend: { child: string; bubble: string; hand: string; cue: string; band: string };
   axis: { front: string; right: string; left: string; back: string; sec: string };
-  radial: { heading: string; body: string; recorded: (s: number) => string; note: string };
-  caveat: string;
+  radial: { heading: string; body: string; recorded: (s: number) => string };
   stages: string[];
   objects: Record<string, string>;
   cueTip: (ok: number, n: number, react: number | null) => string;
@@ -27,12 +25,10 @@ const ko: ProcessText = {
   eyebrow: "Process · DayDream",
   title: "시선을 초 단위로 설계하고, 기록으로 확인합니다",
   lead: "DayDream의 관객은 의자에 앉아 고개만 돌립니다. 아이, 말풍선 등 연출이 언제 어느 방향에 나타날지 QA를 진행하며 정했습니다. 테스트 플레이마다 머리 방향을 기록해 그 설계와 비교합니다.",
-  source: "2026년 11월 10~11일 내부 테스트 플레이 기준",
   back: "홈으로",
   score: {
     heading: "시선 악보",
     body: "가로는 시간, 세로는 정면을 기준으로 한 방향입니다. 선은 대상이 화면에 있는 동안의 위치이고, 점은 시선을 끌려는 순간입니다. 옅은 띠(±30°)는 정면을 본 채로도 보이는 범위라서, 띠 밖의 점이 고개를 돌리게 해야 하는 순간입니다.",
-    note: (len, total, off) => `길이 ${len}초. 큐 ${total}개 중 ${off}개가 정면 띠 밖에 있습니다.`,
   },
   legend: { child: "아이", bubble: "말풍선·영상창", hand: "손으로 만지는 대상", cue: "시선 큐", band: "정면 ±30°" },
   axis: { front: "정면", right: "오른쪽", left: "왼쪽", back: "등 뒤", sec: "초" },
@@ -40,9 +36,7 @@ const ko: ProcessText = {
     heading: "머리가 실제로 향한 방향",
     body: "관객을 위에서 내려다본 그림입니다. 위쪽이 정면이고, 칸이 진할수록 그 방향을 오래 봤습니다. 바깥 눈금은 그 스테이지에서 큐가 놓인 방향입니다.",
     recorded: (s) => `기록 ${s}초`,
-    note: "S1은 끝까지 간 세션이 1개라 한 사람의 궤적입니다. S0, S1.5, S3에는 헤드셋 없이 돌린 세션(정면 고정)이 섞여 있습니다.",
   },
-  caveat: "측정값은 눈이 아니라 머리 방향입니다. 큐가 나온 뒤 8~10초 안에 머리가 대상 ±30° 안으로 들어오면 성공으로 셉니다.",
   stages: ["S0 튜토리얼", "S1 강가까지", "S1.5 신령의 공간", "S2 꿈", "S3 엔딩", "S4 엔딩 2"],
   objects: {
     o0: "아이 옮기기", o1: "꽃잎", o2: "빛나는 나무", o3: "연잎", o4: "연등 도착 자리", o5: "아이 되돌리기",
@@ -63,12 +57,10 @@ const en: ProcessText = {
   eyebrow: "Process · DayDream",
   title: "We design where you look, second by second, and check it against recordings",
   lead: "In DayDream the audience sits in a chair and only turns their head. We ran QA to decide when and in which direction the child, the speech bubbles and other staging appear. Every test play records head direction, and we compare it with that design.",
-  source: "Based on internal test plays, 10 to 11 November 2026",
   back: "Home",
   score: {
     heading: "The gaze score",
     body: "Time runs left to right, and the vertical axis is direction relative to straight ahead. A line shows where a target is while it is on screen, and a dot marks a moment meant to pull the gaze. The pale band (±30°) is what you can see while facing forward, so dots outside it are the moments that must make you turn your head.",
-    note: (len, total, off) => `${len} seconds long. ${off} of ${total} cues sit outside the front band.`,
   },
   legend: { child: "Child", bubble: "Speech bubbles and video", hand: "Things you touch", cue: "Gaze cue", band: "Front ±30°" },
   axis: { front: "Front", right: "Right", left: "Left", back: "Behind", sec: "s" },
@@ -76,9 +68,7 @@ const en: ProcessText = {
     heading: "Where heads actually pointed",
     body: "The viewer seen from above. Up is straight ahead, and a darker cell means more time spent facing that way. The outer ticks mark where that stage's cues sit.",
     recorded: (s) => `${s} s recorded`,
-    note: "Only one session finished S1, so that chart is one person's path. S0, S1.5 and S3 include runs without a headset, which stay fixed on the front.",
   },
-  caveat: "We measure head direction, not eye direction. A cue counts as a hit when the head comes within ±30° of the target 8 to 10 seconds after the cue.",
   stages: ["S0 Tutorial", "S1 To the river", "S1.5 The spirit's place", "S2 Dream", "S3 Ending", "S4 Ending 2"],
   objects: {
     o0: "Moving the child", o1: "Petal", o2: "Glowing tree", o3: "Lotus leaf", o4: "Lantern landing spot", o5: "Returning the child",
@@ -99,12 +89,10 @@ const ja: ProcessText = {
   eyebrow: "Process · DayDream",
   title: "視線を秒単位で設計し、記録で確かめます",
   lead: "DayDreamの観客は椅子に座ったまま、首だけを動かします。子どもや吹き出しなどの演出がいつ、どの方向に現れるかを、QAを重ねながら決めました。テストプレイのたびに頭の向きを記録し、その設計と比べます。",
-  source: "2026年11月10〜11日の内部テストプレイに基づく",
   back: "ホームへ",
   score: {
     heading: "視線の楽譜",
     body: "横は時間、縦は正面を基準にした方向です。線は対象が画面にある間の位置、点は視線を引こうとする瞬間です。薄い帯（±30°）は正面を向いたままでも見える範囲なので、帯の外にある点が、首を回してもらう必要のある瞬間です。",
-    note: (len, total, off) => `長さ${len}秒。キュー${total}個のうち${off}個が正面の帯の外にあります。`,
   },
   legend: { child: "子ども", bubble: "吹き出し・映像", hand: "手で触れる対象", cue: "視線キュー", band: "正面±30°" },
   axis: { front: "正面", right: "右", left: "左", back: "背後", sec: "秒" },
@@ -112,9 +100,7 @@ const ja: ProcessText = {
     heading: "頭が実際に向いた方向",
     body: "観客を上から見た図です。上が正面で、色が濃いほどその方向を長く見ていました。外側の目盛りは、そのステージでキューが置かれた方向です。",
     recorded: (s) => `記録${s}秒`,
-    note: "S1は最後まで進んだセッションが1つだけなので、1人分の軌跡です。S0、S1.5、S3にはヘッドセットなしで回したセッション（正面固定）が混ざっています。",
   },
-  caveat: "測っているのは目ではなく頭の向きです。キューが出てから8〜10秒以内に頭が対象の±30°以内に入れば成功と数えます。",
   stages: ["S0 チュートリアル", "S1 川辺まで", "S1.5 神霊の空間", "S2 夢", "S3 エンディング", "S4 エンディング2"],
   objects: {
     o0: "子どもを運ぶ", o1: "花びら", o2: "光る木", o3: "蓮の葉", o4: "燃灯の到着場所", o5: "子どもを戻す",

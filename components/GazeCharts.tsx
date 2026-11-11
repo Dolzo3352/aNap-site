@@ -48,7 +48,6 @@ export function GazeScore({ locale }: { locale: Locale }) {
   for (let i = 1; i < labels.length; i++) if (labels[i].endY - labels[i - 1].endY < 15) labels[i].endY = labels[i - 1].endY + 15;
 
   const cs = cues.filter((c) => c.stage === stage);
-  const off = cs.filter((c) => Math.abs(c.yaw) > 30).length;
   const step = len > 120 ? 30 : len > 60 ? 15 : 10;
   const ticks: number[] = [];
   for (let s = 0; s <= len; s += step) ticks.push(s);
@@ -110,7 +109,6 @@ export function GazeScore({ locale }: { locale: Locale }) {
           ))}
         </svg>
       </div>
-      <p className="chart-note">{t.score.note(Math.round(len), cs.length, off)}</p>
     </div>
   );
 }
@@ -163,7 +161,6 @@ export function GazeRadials({ locale }: { locale: Locale }) {
           );
         })}
       </div>
-      <p className="chart-note">{t.radial.note}</p>
     </div>
   );
 }
