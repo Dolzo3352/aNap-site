@@ -48,7 +48,7 @@ export const spacePlanSrc = "/images/exhibition/space-plan.svg";
 
 /** 팀원 — 순서는 ko/en/ja 의 members 와 같아야 합니다 */
 export const membersMeta: { portfolio?: string; character: 1 | 2 | 3 }[] = [
-  { portfolio: "#", character: 1 }, // [TODO] 송동호 포트폴리오
+  { character: 1 }, // 송동호 — 포트폴리오 링크가 생기면 portfolio: "..." 추가
   { portfolio: "https://hayunz.github.io/portfolio/", character: 2 },
   { portfolio: "https://jiyunan13.myportfolio.com/", character: 3 },
 ];
