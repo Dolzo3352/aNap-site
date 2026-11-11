@@ -33,6 +33,7 @@ export const worksMeta = {
   },
   snowglobe: {
     hero: "/images/works/snowglobe/hero.webp",
+    stills: ["/images/works/snowglobe/still-02.webp"],
   },
 };
 
