@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Pod from "@/components/Pod";
 import Brainstorm from "@/components/Brainstorm";
+import ProcessSection from "@/components/ProcessSection";
 import AboutScene from "@/components/AboutScene";
 import PeaAvatar from "@/components/PeaAvatar";
 import Reveal from "@/components/Reveal";
@@ -77,7 +78,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 </span>
                 <h3 className="strength-title">{pt.homeStrength.title}</h3>
                 <p className="strength-body">{pt.homeStrength.body}</p>
-                <a className="strength-link" href={`/${locale}/process`}>
+                <a className="strength-link" href="#process">
                   {pt.homeStrength.link} <Icon name="arrow" size={15} />
                 </a>
               </Reveal>
@@ -107,6 +108,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
         <Divider className="section-divider" />
 
+        {/* ───────── Process ───────── */}
+        <section id="process" className="section process-home" aria-labelledby="process-title">
+          <ProcessSection locale={locale} />
+        </section>
+
+        <Divider className="section-divider" />
+
         {/* ───────── Space / How we work ───────── */}
         <section id="space" className="section space" aria-labelledby="space-title">
           <Reveal className="section-head">
@@ -117,32 +125,37 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             <p className="section-lead">{howWeWork.body}</p>
           </Reveal>
 
-          <div className="space-grid">
-            {howWeWork.photos.map((p, i) => (
-              <Reveal key={p.src} as="div" className={`space-photo space-photo-${i + 1}`} delay={i * 80}>
-                <figure>
-                  <div className="space-img-wrap">
-                    <Image
-                      src={p.src}
-                      alt={p.alt}
-                      fill
-                      sizes={i === 0 ? "(max-width: 900px) 100vw, 66vw" : "(max-width: 900px) 100vw, 33vw"}
-                      className="space-img"
-                    />
-                  </div>
-                  <figcaption>{p.caption}</figcaption>
-                </figure>
-              </Reveal>
-            ))}
-            <Reveal as="div" className="space-plan" delay={240}>
+          <div className="gallery">
+            <Reveal as="div" className="shot shot-wide">
               <figure>
-                <div className="space-plan-wrap">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={howWeWork.plan.src} alt={ui.planAlt} />
-                </div>
-                <figcaption>{howWeWork.plan.caption}</figcaption>
+                <Image
+                  src={howWeWork.photos[0].src}
+                  alt={howWeWork.photos[0].alt}
+                  width={howWeWork.photos[0].w}
+                  height={howWeWork.photos[0].h}
+                  sizes="(max-width: 1200px) 100vw, 1010px"
+                  className="shot-img"
+                />
+                <figcaption>{howWeWork.photos[0].caption}</figcaption>
               </figure>
             </Reveal>
+            <div className="gallery-row">
+              {howWeWork.photos.slice(1).map((p, i) => (
+                <Reveal key={p.src} as="div" className="shot" delay={(i + 1) * 80}>
+                  <figure style={{ flexGrow: p.w / p.h }}>
+                    <Image src={p.src} alt={p.alt} width={p.w} height={p.h} sizes="(max-width: 760px) 100vw, 40vw" className="shot-img" />
+                    <figcaption>{p.caption}</figcaption>
+                  </figure>
+                </Reveal>
+              ))}
+              <Reveal as="div" className="shot" delay={240}>
+                <figure style={{ flexGrow: 1.6 }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={howWeWork.plan.src} alt={ui.planAlt} width={960} height={600} className="shot-img shot-plan" />
+                  <figcaption>{howWeWork.plan.caption}</figcaption>
+                </figure>
+              </Reveal>
+            </div>
           </div>
 
           <Reveal className="stack" delay={120}>

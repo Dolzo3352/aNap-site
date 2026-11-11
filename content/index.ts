@@ -42,7 +42,7 @@ export function getContent(locale: Locale) {
     howWeWork: {
       heading: t.howWeWork.heading,
       body: t.howWeWork.body,
-      photos: exhibitionPhotos.map((src, i) => ({ src, ...t.howWeWork.photos[i] })),
+      photos: exhibitionPhotos.map((p, i) => ({ ...p, ...t.howWeWork.photos[i] })),
       plan: { src: spacePlanSrc, caption: t.howWeWork.planCaption },
       stack: t.howWeWork.stack,
     },

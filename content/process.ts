@@ -23,7 +23,7 @@ export type ProcessText = {
 const ko: ProcessText = {
   navLabel: "Process",
   eyebrow: "Process · DayDream",
-  title: "시선을 초 단위로 설계하고, 기록으로 확인합니다",
+  title: "디테일한 QA를 통해 시선을 초 단위로 설계합니다",
   lead: "DayDream의 관객은 의자에 앉아 고개만 돌립니다. 아이, 말풍선 등 연출이 언제 어느 방향에 나타날지 QA를 진행하며 정했습니다. 테스트 플레이마다 머리 방향을 기록해 그 설계와 비교합니다.",
   back: "홈으로",
   score: {
@@ -55,7 +55,7 @@ const ko: ProcessText = {
 const en: ProcessText = {
   navLabel: "Process",
   eyebrow: "Process · DayDream",
-  title: "We design where you look, second by second, and check it against recordings",
+  title: "Through detailed QA, we design where you look second by second",
   lead: "In DayDream the audience sits in a chair and only turns their head. We ran QA to decide when and in which direction the child, the speech bubbles and other staging appear. Every test play records head direction, and we compare it with that design.",
   back: "Home",
   score: {
@@ -87,7 +87,7 @@ const en: ProcessText = {
 const ja: ProcessText = {
   navLabel: "Process",
   eyebrow: "Process · DayDream",
-  title: "視線を秒単位で設計し、記録で確かめます",
+  title: "細かなQAを通して、視線を秒単位で設計します",
   lead: "DayDreamの観客は椅子に座ったまま、首だけを動かします。子どもや吹き出しなどの演出がいつ、どの方向に現れるかを、QAを重ねながら決めました。テストプレイのたびに頭の向きを記録し、その設計と比べます。",
   back: "ホームへ",
   score: {

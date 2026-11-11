@@ -40,10 +40,11 @@ export const worksMeta = {
 /** Works 섹션에 보여줄 순서 */
 export const worksOrder = ["daydream", "maeum", "snowglobe"] as const;
 
+/** 전시 사진 — 원본 비율 그대로 보여 줍니다 (w, h 는 파일의 실제 크기) */
 export const exhibitionPhotos = [
-  "/images/exhibition/overview-01.webp",
-  "/images/exhibition/visitor.webp",
-  "/images/exhibition/installation.webp",
+  { src: "/images/exhibition/overview-01.webp", w: 1800, h: 1012 },
+  { src: "/images/exhibition/wall.webp", w: 1416, h: 944 },
+  { src: "/images/exhibition/installation.webp", w: 1600, h: 900 },
 ];
 export const spacePlanSrc = "/images/exhibition/space-plan.svg";
 

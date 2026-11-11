@@ -31,6 +31,7 @@ export default function Nav({
   const links = [
     { href: `${base}#about`, label: labels.about },
     { href: `${base}#works`, label: labels.works },
+    { href: `${base}#process`, label: processLabel },
     { href: `${base}#space`, label: labels.space },
     { href: `${base}#people`, label: labels.people },
     { href: `${base}#contact`, label: labels.contact },
@@ -48,13 +49,6 @@ export default function Nav({
               {l.label}
             </a>
           ))}
-          <a
-            href={`/${locale}/process`}
-            aria-current={subpath === "/process" ? "page" : undefined}
-            className={subpath === "/process" ? "is-current" : ""}
-          >
-            {processLabel}
-          </a>
         </nav>
         <nav className="lang" aria-label={langMenu}>
           {locales.map((l, i) => (

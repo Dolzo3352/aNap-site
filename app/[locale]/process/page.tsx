@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Icon, { Wordmark } from "@/components/Icon";
-import { GazeRadials, GazeScore } from "@/components/GazeCharts";
+import ProcessSection from "@/components/ProcessSection";
 import { getContent, isLocale, localeLabel, locales } from "@/content";
 import { processText } from "@/content/process";
 
@@ -30,23 +30,7 @@ export default async function ProcessPage({ params }: { params: Promise<{ locale
     <>
       <Nav locale={locale} labels={ui.nav} langMenu={ui.langMenu} processLabel={t.navLabel} subpath="/process" />
       <main className="process">
-        <header className="process-head">
-          <p className="eyebrow">{t.eyebrow}</p>
-          <h1 className="process-title">{t.title}</h1>
-          <p className="process-lead">{t.lead}</p>
-        </header>
-
-        <section className="process-section">
-          <h2 className="h2">{t.score.heading}</h2>
-          <p className="process-body">{t.score.body}</p>
-          <GazeScore locale={locale} />
-        </section>
-
-        <section className="process-section">
-          <h2 className="h2">{t.radial.heading}</h2>
-          <p className="process-body">{t.radial.body}</p>
-          <GazeRadials locale={locale} />
-        </section>
+        <ProcessSection locale={locale} standalone />
 
         <p className="process-back">
           <a className="btn btn-sm" href={`/${locale}`}>

@@ -81,7 +81,7 @@ const en: LocaleText = {
     body: "We build a space where people waiting their turn can watch and enjoy. Sculptures, lighting and monitor mirroring shape the flow before and after the experience. We handle on-site guidance and equipment ourselves.",
     photos: [
       { alt: "Showcase booth overview with hanji sculptures, a lantern wall and visitors mid-experience", caption: "2026 New Content Academy Showcase · booth overview" },
-      { alt: "A visitor in a headset reaching out during the experience", caption: "Hand-tracking experience · monitor mirroring lets waiting visitors watch along" },
+      { alt: "A visitor sticks a lantern note on the wall after the experience while another puts on a headset", caption: "A visitor adds a lantern note to the wall after the experience" },
       { alt: "Experience stations and sculpture installation", caption: "Experience stations · sculptures · info table" },
     ],
     planCaption: "Flow concept: reception, three experience stations, display, exit (not a measured plan)",
