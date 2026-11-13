@@ -68,8 +68,9 @@ const ja: LocaleText = {
       linkLabel: "作品サイト",
     },
     snowglobe: {
-      title: "in the snowglobe",
-      titleEn: "白い雪が降るころ",
+      title: "白い雪が降るころ",
+      titleEn: "in the snowglobe",
+      linkLabel: "作品サイト",
       year: "制作中",
       format: "MR → VR → MR · 雪だるまづくり体験",
       logline: "スノードームの中へ入り、一緒に雪だるまをつくって帰ってきます。",

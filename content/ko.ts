@@ -68,8 +68,9 @@ const ko: LocaleText = {
       linkLabel: "작품 사이트",
     },
     snowglobe: {
-      title: "in the snowglobe",
-      titleEn: "하얀 눈이 내려올 때면",
+      title: "하얀 눈이 내려올 때면",
+      titleEn: "in the snowglobe",
+      linkLabel: "작품 사이트",
       year: "제작 중",
       format: "MR → VR → MR · 눈사람 만들기 체험",
       logline: "스노우볼 속으로 들어가, 함께 눈사람을 만들고 돌아옵니다.",

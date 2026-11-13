@@ -32,6 +32,7 @@ export const worksMeta = {
     poster: "/images/works/maeum/poster.webp",
   },
   snowglobe: {
+    link: "https://inthesnowglobe-site.vercel.app",
     hero: "/images/works/snowglobe/hero.webp",
     stills: ["/images/works/snowglobe/still-02.webp"],
   },

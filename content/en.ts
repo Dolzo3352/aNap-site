@@ -69,8 +69,9 @@ const en: LocaleText = {
       linkLabel: "Project site",
     },
     snowglobe: {
-      title: "in the snowglobe",
-      titleEn: "When the White Snow Falls",
+      title: "When the White Snow Falls",
+      titleEn: "in the snowglobe",
+      linkLabel: "Project site",
       year: "In production",
       format: "MR → VR → MR · build-a-snowman experience",
       logline: "Step into a snow globe, build a snowman together, and come back out.",
