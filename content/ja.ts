@@ -24,6 +24,7 @@ const ja: LocaleText = {
     rights: "All rights reserved.",
     langMenu: "言語を選択",
     newWindow: "新しいウィンドウで開きます",
+    photo: { open: "拡大して見る", close: "閉じる", prev: "前の写真", next: "次の写真" },
   },
   about: {
     heading: "私たちがつくるもの",
@@ -79,8 +80,8 @@ const ja: LocaleText = {
     heading: "空間まで運営します",
     body: "待っている人も見て楽しめる空間をつくります。造形物・照明・モニターミラーリングで体験前後の流れを設計し、現場案内や機材管理まで自分たちで担います。",
     photos: [
-      { alt: "ショーケースブース全景。韓紙の造形物と燃灯の壁、体験中の来場者", caption: "2026 New Content Academy Showcase · ブース全景" },
       { alt: "体験を終えた来場者が燃灯のメモを壁に貼り、隣では別の来場者がヘッドセットを着けている様子", caption: "体験のあと、燃灯のメモを壁に貼る来場者" },
+      { alt: "ショーケースブース全景。韓紙の造形物と燃灯の壁、体験中の来場者", caption: "2026 New Content Academy Showcase · ブース全景" },
       { alt: "体験ステーションと造形物の設営の様子", caption: "体験ステーション · 造形物 · 案内テーブルの構成" },
     ],
     planCaption: "動線コンセプト図: 受付、体験ステーション3台、ディスプレイ、出口の順（実測図面ではありません）",

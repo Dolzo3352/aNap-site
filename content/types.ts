@@ -24,6 +24,7 @@ export type LocaleText = {
     rights: string;
     langMenu: string;
     newWindow: string;
+    photo: { open: string; close: string; prev: string; next: string };
   };
   about: {
     heading: string;

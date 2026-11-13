@@ -24,6 +24,7 @@ const ko: LocaleText = {
     rights: "All rights reserved.",
     langMenu: "언어 선택",
     newWindow: "새 창",
+    photo: { open: "크게 보기", close: "닫기", prev: "이전 사진", next: "다음 사진" },
   },
   about: {
     heading: "우리는 이런 걸 만들어요",
@@ -79,8 +80,8 @@ const ko: LocaleText = {
     heading: "공간까지 운영합니다",
     body: "기다리는 사람도 보고 즐길 수 있는 공간을 만듭니다. 조형물·조명·모니터 미러링으로 체험 전후의 흐름을 설계하고, 현장 안내와 장비 관리까지 직접 맡습니다.",
     photos: [
-      { alt: "쇼케이스 부스 전경. 한지 조형물과 연등 벽, 체험 중인 관람객", caption: "2026 New Content Academy Showcase · 부스 전경" },
       { alt: "체험을 마친 관람객이 연등 메모를 벽에 붙이고, 옆에서는 다른 관람객이 헤드셋을 쓰고 있는 모습", caption: "체험 뒤 연등 메모를 벽에 붙이는 관람객" },
+      { alt: "쇼케이스 부스 전경. 한지 조형물과 연등 벽, 체험 중인 관람객", caption: "2026 New Content Academy Showcase · 부스 전경" },
       { alt: "체험 스테이션과 조형물 설치 모습", caption: "체험 스테이션 · 조형물 · 안내 테이블 구성" },
     ],
     planCaption: "동선 개념도: 리셉션, 체험 스테이션 3대, 디스플레이, 출구 순서 (실측 도면 아님)",
