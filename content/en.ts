@@ -64,7 +64,7 @@ const en: LocaleText = {
       titleEn: "마음한첩",
       year: "2025",
       format: "VR cinema · low-poly animation",
-      logline: "A child sets out to bring medicine to her sick father, and the bus goes the other way.",
+      logline: "A child went to get medicine for her father, but got on the bus going the wrong way..?",
       body: "A short VR animation set in a warm, autumn-lit low-poly village, about a small mistake and the way back home.",
       linkLabel: "Project site",
     },

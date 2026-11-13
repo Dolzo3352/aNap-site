@@ -1728,3 +1728,16 @@ li {
   top: 50%;
   transform: translateY(-50%);
 }
+
+/* Works 카드: 같은 줄의 카드는 높이를 맞춤 */
+.works-grid > * {
+  display: flex;
+}
+.works-grid .work-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.works-grid .work-text {
+  flex: 1;
+}
